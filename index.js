@@ -20,17 +20,22 @@ server.route({
   method: "GET",
   path: "/books",
   options: {
+    description: "Get books list",
+    notes: "Returns an array of books",
+    tags: ["api"],
     handler: async (request, h) => {
       const books = await readFile("./books.json", "utf8");
       return h.response(JSON.parse(books));
     },
   },
 });
-
 server.route({
   method: "POST",
   path: "/books",
   options: {
+    description: "Create book",
+    notes: "Returns an array of books",
+    tags: ["api"],
     handler: async (request, h) => {
       console.log(request.payload);
       const book = JSON.parse(JSON.stringify(request.payload));
@@ -44,7 +49,6 @@ server.route({
     },
   },
 });
-
 server.route({
   method: "PUT",
   path: "/books/{id}",
